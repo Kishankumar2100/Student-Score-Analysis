@@ -8,64 +8,39 @@ The analysis is conducted using a dataset (`Expanded_data_with_more_features.csv
 
 ### Initial Data Preparation
 
-```python
-import pandas as pd
+Data was loaded from the dataset `Expanded_data_with_more_features.csv`. Columns were cleaned and prepared for analysis, including mapping the format of weekly study hours.
 
-# Load the dataset
-df = pd.read_csv("Expanded_data_with_more_features.csv")
+## Visual Analysis
 
-# Drop Unnamed Column
-df.drop(columns=['Unnamed: 0'], inplace=True)
+### Gender Distribution
 
-# Mapping Weekly Study Hours
-df["WklyStudyHours"] = df["WklyStudyHours"].str.replace("05-Oct", "5-10")
+From the analysis, it is observed that the number of females in the dataset is higher than the number of males.
 
-# Visual Analysis
+### Impact of Parent's Education on Student Scores
 
-## Gender Distribution
+A heatmap visualization reveals a positive relationship between parent's education level and student scores.
 
-From the chart, it is observed that the number of females in the dataset is higher than the number of males.
+### Impact of Parent's Marital Status on Student Score
 
-## Impact of Parent's Education on Student Scores
+Analysis shows no significant impact on student scores due to their parent's marital status.
 
-The heatmap illustrates a positive relationship between parent's education level and student scores.
+### Test Preparation Program Effectiveness
 
-## Impact of Parent's Marital Status on Student Score
+Students who participated in the test preparation program generally achieved higher average scores in Math, Reading, and Writing compared to those who did not participate.
 
-From the analysis, there appears to be no significant impact on student scores due to their parent's marital status.
+### Impact of Sports Participation on Academic Performance
 
-## Test Preparation Program Effectiveness
+Participation in sports correlates positively with academic performance across subjects (Math, Reading, Writing).
 
-The chart below indicates that students who participated in the test preparation program generally achieved higher average scores in Math, Reading, and Writing compared to those who did not participate. This suggests that the test preparation program is effective in enhancing academic performance.
+### Distribution of Ethnic Groups
 
-## Impact of Sports Participation on Academic Performance
+A pie chart illustrates the distribution of students across different ethnic groups in the dataset.
 
-Sports participation positively impacts academic performance. Students who engage in regular or occasional sports activities tend to achieve higher scores in Math, Reading, and Writing.
+### Weekly Study Hours and Total Score Analysis
 
-## Distribution of Ethnic Groups
+A bar plot demonstrates the relationship between weekly study hours and average total scores.
 
-The pie chart shows the distribution of students across different ethnic groups in the dataset.
+## Conclusion
 
-## Weekly Study Hours and Total Score Analysis
+This analysis provides insights into various factors influencing student performance, highlighting the positive impacts of parent's education, test preparation programs, and sports participation. For further details and complete analysis, refer to the Jupyter Notebook (`analysis.ipynb`) in this repository.
 
-```python
-import matplotlib.pyplot as plt
-import seaborn as sns
-
-# Calculate the average total score and count for each category of weekly study hours
-avg_scores = df.groupby('WklyStudyHoursNum')['TotalScore'].agg(['mean', 'count']).reset_index()
-
-# Plotting the bar plot
-plt.figure(figsize=(10, 6))
-sns.barplot(x='WklyStudyHoursNum', y='mean', data=avg_scores, palette='viridis')
-plt.title('Average Total Score and Count by Weekly Study Hours')
-plt.xlabel('Weekly Study Hours')
-plt.ylabel('Average Total Score')
-plt.grid(True)
-
-# Annotate bars with count information
-for index, row in avg_scores.iterrows():
-    plt.text(index, row['mean'] + 1, f'n={row["count"]}', ha='center', color='black')
-
-plt.savefig('weekly_study_hours_analysis.png')
-plt.show()

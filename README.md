@@ -19,7 +19,7 @@ From the analysis, it is observed that the number of females in the dataset is h
 ### Impact of Parent's Education on Student Scores
 
 A heatmap visualization reveals a positive relationship between parent's education level and student scores.
-
+![Impact of Parent's Education](images/Screenshot_(125).png)
 ### Impact of Parent's Marital Status on Student Score
 
 Analysis shows no significant impact on student scores due to their parent's marital status.

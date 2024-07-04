@@ -15,7 +15,7 @@ Data was loaded from the dataset `Expanded_data_with_more_features.csv`. Columns
 ### Gender Distribution
 
 From the analysis, it is observed that the number of females in the dataset is higher than the number of males.
-
+![Gender Distribution](gender_countplot.png)
 ### Impact of Parent's Education on Student Scores
 
 A heatmap visualization reveals a positive relationship between parent's education level and student scores.
